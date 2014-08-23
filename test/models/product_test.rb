@@ -6,17 +6,17 @@ class ProductTest < ActiveSupport::TestCase
 
   test "product is not valid with not allowed length of title" do
     product = Product.new(title:       '我超愛吃漢堡',
-                          description: products(:coffee).description,
+                          description: '我超愛吃漢堡',
                           price:       1,
-                          image_url:   'abc.jpg')
+                          image_url:   'humburger.jpg')
     assert product.invalid?
   end
 
   test "product is not valid without a unique title" do
-    product = Product.new(title:       products(:coffee).title,
-                          description: products(:coffee).description,
+    product = Product.new(title:       products(:ruby).title,
+                          description: products(:ruby).description,
                           price:       1,
-                          image_url:   products(:coffee).image_url)
+                          image_url:   products(:ruby).image_url)
     assert product.invalid?
     assert_equal [I18n.translate('errors.messages.taken')], product.errors[:title]
   end

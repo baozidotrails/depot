@@ -18,7 +18,7 @@ Product.create!(title: 'CoffeeScript',
   image_url:   'cs.jpg',    
   price: 36.00)
 # . . .
-Product.create!(title: 'Programming Ruby 1.9 & 2.0',
+Product.create!(title: 'Programming Ruby 1.9',
   description:
     %{<p>
         Ruby is the fastest growing and most exciting dynamic language
