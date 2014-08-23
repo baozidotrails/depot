@@ -4,6 +4,14 @@ class ProductTest < ActiveSupport::TestCase
 
   fixtures :products
 
+  test "product is not valid with not allowed length of title" do
+    product = Product.new(title:       '我超愛吃漢堡',
+                          description: products(:coffee).description,
+                          price:       1,
+                          image_url:   'abc.jpg')
+    assert product.invalid?
+  end
+
   test "product is not valid without a unique title" do
     product = Product.new(title:       products(:coffee).title,
                           description: products(:coffee).description,
