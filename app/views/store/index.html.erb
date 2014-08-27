@@ -23,6 +23,7 @@
             </div>
 
             <span class="pull-bottom">
+              <span class="price"><%= number_to_currency product.price %></span>
               <%= button_to 'Add Cart', line_items_path(product_id: product.id), class: 'btn btn-success' %>
             </span>
           </div>
