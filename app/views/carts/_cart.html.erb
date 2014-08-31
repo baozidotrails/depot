@@ -1,0 +1,18 @@
+<h2>Your cart</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render cart.line_items %>
+  </tbody>
+</table>
+<h3>Total: <%= number_to_currency cart.total_price %></h3>
+<br>
+<%= link_to 'Empty Cart', cart, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning' %>

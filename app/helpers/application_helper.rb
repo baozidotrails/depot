@@ -10,4 +10,11 @@ module ApplicationHelper
       error:   'alert-danger',
       warning: 'alert-warning' }[flash_type.to_sym] || flash_type.to_s
   end
+
+  def hidden_div_if(condition, attributes = {}, &block)
+    if condition
+      attributes["style"] = "display: none"
+    end
+    content_tag("div", attributes, &block)
+  end
 end

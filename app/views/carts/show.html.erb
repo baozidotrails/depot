@@ -1,10 +1,1 @@
-<h2>Your Pragmatic Cart</h2>
-<ul>
-  <% @cart.line_items.each do |item| %>
-    <li><%= item.product.title %> &times; <%= item.quantity %> - <b><%= number_to_currency item.total_price %></b></li>
-  <% end %>
-</ul>
-<br>
-<h3>Total: <%= number_to_currency @cart.total_price %></h3>
-<%= link_to 'Store', store_path, class: 'btn btn-default' %>
-<%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<%= render @cart %>

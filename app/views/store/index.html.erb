@@ -1,34 +1,29 @@
 <h2>You Pragmatic Catelog</h2>
-<h3><%= pluralize @count, 'Time' %></h3>
-<%= link_to 'Product', products_path %>
-<% cache ['store', Product.latest] do %>
-  <%= div_for @products do |product| %>
-    <% cache ['entry', product] do %>
-      <div class="panel panel-default">
-
-        <div class="panel-heading">
-          <div class="panel-title">
-            <%= product.title %>
-          </div>
-        </div>
-
-        <div class="panel-body" style="position: relative">
-          <div class="media">
-            <span class="pull-left">
-              <%= link_to image_tag(product.image_url), line_items_path(product_id: product.id), method: :post %>
-            </span>
-
-            <div class="media-body description">
-              <%= sanitize product.description %>
-            </div>
-
-            <span class="pull-bottom">
-              <span class="price"><%= number_to_currency product.price %></span>
-              <%= button_to 'Add Cart', line_items_path(product_id: product.id), class: 'btn btn-success' %>
-            </span>
-          </div>
-        </div>
+<!-- <h4><%# pluralize @count, 'Time' %> you visited our store.</h4> -->
+<br>
+<%= div_for @products do |product| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <%= product.title %>
       </div>
-    <% end %>
-  <% end %>
+    </div>
+
+    <div class="panel-body" style="position: relative">
+      <div class="media">
+        <span class="pull-left">
+          <%= link_to image_tag(product.image_url), line_items_path(product_id: product.id), method: :post, remote: true %>
+        </span>
+
+        <div class="media-body description">
+          <%= sanitize product.description %>
+        </div>
+
+        <span class="pull-bottom">
+          <div class="price"><%= number_to_currency product.price %></div>
+          <%= button_to 'Add to Cart', line_items_path(product_id: product.id), remote: true, class: 'btn btn-success' %>
+        </span>
+      </div>
+    </div>
+  </div>
 <% end %>
