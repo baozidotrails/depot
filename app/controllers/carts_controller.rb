@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
+
+  # invalid page redirection
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   # GET /carts
@@ -60,6 +62,7 @@ class CartsController < ApplicationController
     respond_to do |format|
       flash[:warning] = "Cart was successfully empty."
       format.html { redirect_to store_url }
+      format.js
       format.json { head :no_content }
     end
   end

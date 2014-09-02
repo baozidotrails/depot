@@ -6,6 +6,7 @@
       <th>Quantity</th>
       <th>Price</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -15,4 +16,4 @@
 </table>
 <h3>Total: <%= number_to_currency cart.total_price %></h3>
 <br>
-<%= link_to 'Empty Cart', cart, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning' %>
+<%= link_to 'Empty Cart', cart, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning', remote: true %>
