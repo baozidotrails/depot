@@ -5,11 +5,6 @@ class LineItemsControllerTest < ActionController::TestCase
     @line_item = line_items(:one)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:line_items)
-  end
 
   test "should get new" do
     get :new

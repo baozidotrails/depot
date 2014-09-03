@@ -9,6 +9,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
+        format.html { redirect_to store_url }
         format.js { @current_item = @line_item }
       end
     end
@@ -41,7 +42,7 @@ class LineItemsController < ApplicationController
     respond_to do |format|
       if @line_item.save
         session[:counter] = nil
-        flash[:success] = "Item add in cart successfully."
+        # flash[:success] = "Item add in cart successfully."
         format.html { redirect_to store_url }
         format.js { @current_item = @line_item }
         format.json { render :show, status: :created, location: @line_item }
@@ -71,9 +72,8 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      flash[:warning] = "Delete item #{@line_item.product.title} successfully."
       format.html { redirect_to store_url }
-      format.json { head :no_content }
+      format.js { @current_item = @line_item }
     end
   end
 

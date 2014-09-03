@@ -16,4 +16,5 @@
 </table>
 <h3>Total: <%= number_to_currency cart.total_price %></h3>
 <br>
-<%= link_to 'Empty Cart', cart, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning', remote: true %>
+<%= button_to 'Checkout', new_order_path, method: :get, class: 'btn btn-success' %> <span class="sep"></span>
+<%= button_to 'Empty Cart', cart, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning', remote: true %>
