@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
     if stale?(@latest_order)
       respond_to do |format|
         format.atom
+        format.xml { render xml: @product.to_xml(include: :orders) }
+        format.json { render json: @product.as_json(include: :orders) }
       end
     end
   end
