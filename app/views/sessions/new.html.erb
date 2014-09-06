@@ -1,0 +1,15 @@
+<%= form_tag login_processing_path do %>
+  <p>
+    <%= label_tag :name, 'Name:' %>
+    <%= text_field_tag :name, params[:name] %>
+  </p>
+
+  <p>
+    <%= label_tag :password, 'Password' %>
+    <%= password_field_tag :password, params[:password] %>
+  </p>
+
+  <p>
+    <%= submit_tag "Login" %>
+  </p>
+<% end %>

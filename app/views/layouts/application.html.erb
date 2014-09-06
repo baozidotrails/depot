@@ -12,6 +12,12 @@
       <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
         <div class="list-group">
           <%= link_to 'Home', store_path, class: 'list-group-item' %>
+          <% if session[:user_id] %>
+            <%= link_to 'Orders', orders_path, class: 'list-group-item' %>
+            <%= link_to 'Products', products_path, class: 'list-group-item' %>
+            <%= link_to 'User', users_path, class: 'list-group-item' %>
+            <%= link_to 'Logout', logout_path, method: :delete, class: 'list-group-item' %>
+          <% end %>
           <br>
           <% if @cart.present? %>
             <%= hidden_div_if @cart.line_items.empty?, id: 'cart' do %>

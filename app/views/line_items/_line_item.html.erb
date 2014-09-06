@@ -6,10 +6,12 @@
   <td><%= line_item.product.title %></td>
   <td><%= line_item.quantity %></td>
   <td><%= number_to_currency line_item.total_price %></td>
+  <% if @order.nil? %>
   <td>
     <%= button_to '－', decrement_line_item_path(line_item), remote: true, class: 'btn btn-danger btn-xs' %>
   </td>
   <td>
     <%= button_to '＋', line_items_path(product_id: line_item.product.id), remote: true, class: 'btn btn-primary btn-xs' %>
   </td>
+  <% end %>
 </tr>
