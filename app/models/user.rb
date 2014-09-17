@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+  attr_reader :current_password
+
   validates :name, presence: true, uniqueness: true
   has_secure_password
 

@@ -12,7 +12,7 @@
     <div class="panel-body" style="position: relative">
       <div class="media">
         <span class="pull-left">
-          <%= link_to image_tag(product.image_url), line_items_path(product_id: product.id), method: :post, remote: true %>
+          <%= link_to image_tag(product.image_url, class: 'book-photo'), line_items_path(product_id: product.id), method: :post, remote: true %>
         </span>
 
         <div class="media-body description">

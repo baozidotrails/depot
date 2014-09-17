@@ -41,14 +41,15 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
+    unless @user.authenticate(params[:user][:current_password])
+      flash[:error] = "Current password is incorrect."
+      render :edit
+    else
       if @user.update(user_params)
         flash[:success] = "User #{@user.name} was successfully updated."
-        format.html { redirect_to users_url }
-        format.json { render :show, status: :ok, location: @user }
+        redirect_to users_url
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render :edit
       end
     end
   end
