@@ -5,6 +5,8 @@ class Product < ActiveRecord::Base
 
   before_destroy :ensure_not_referenced_by_any_line_item
 
+  scope :recent, -> { order("created_at DESC").limit(2) }
+
   # validates(:title, :description, :image_url, :price, presence: true)
   validates :title, :description, :image_url, presence: true
   validates :title, uniqueness: true,
